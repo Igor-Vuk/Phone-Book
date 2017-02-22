@@ -1,5 +1,6 @@
 var React = require("react");
 var ContactList = require("ContactList");
+var AddContact = require("AddContact");
 
 var ContactApp = React.createClass({
 
@@ -8,7 +9,7 @@ var ContactApp = React.createClass({
             contacts: [
                 {
                     id: 1,
-                    name: "Igor",
+                    firstName: "Igor",
                     lastName: "Vukelic",
                     email: "igvukelic@gmail.com",
                     phoneNumber: 234545643
@@ -23,11 +24,15 @@ var ContactApp = React.createClass({
             ]
         };
     },
+    handleAddContact: function (text) {
+        alert("new contact: " + text.firstName + " " + text.lastName + " " + text.email + " " + text.phoneNumber);
+    },
     render: function() {
         var {contacts} = this.state;
         return (
             <div>
                 <ContactList contacts = {contacts}/>
+                <AddContact onAddContact = {this.handleAddContact}/>
             </div>
         );
     }

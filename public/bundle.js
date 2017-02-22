@@ -110,7 +110,7 @@
 	$(document).foundation();
 	
 	//App css
-	__webpack_require__(243);
+	__webpack_require__(244);
 	
 	ReactDOM.render(React.createElement(ContactApp, null), document.getElementById("app"));
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7)))
@@ -26595,6 +26595,7 @@
 	
 	var React = __webpack_require__(8);
 	var ContactList = __webpack_require__(241);
+	var AddContact = __webpack_require__(243);
 	
 	var ContactApp = React.createClass({
 	    displayName: "ContactApp",
@@ -26604,7 +26605,7 @@
 	        return {
 	            contacts: [{
 	                id: 1,
-	                name: "Igor",
+	                firstName: "Igor",
 	                lastName: "Vukelic",
 	                email: "igvukelic@gmail.com",
 	                phoneNumber: 234545643
@@ -26617,13 +26618,17 @@
 	            }]
 	        };
 	    },
+	    handleAddContact: function handleAddContact(text) {
+	        alert("new contact: " + text.firstName + " " + text.lastName + " " + text.email + " " + text.phoneNumber);
+	    },
 	    render: function render() {
 	        var contacts = this.state.contacts;
 	
 	        return React.createElement(
 	            "div",
 	            null,
-	            React.createElement(ContactList, { contacts: contacts })
+	            React.createElement(ContactList, { contacts: contacts }),
+	            React.createElement(AddContact, { onAddContact: this.handleAddContact })
 	        );
 	    }
 	});
@@ -26680,7 +26685,7 @@
 	    render: function render() {
 	        var _props = this.props,
 	            id = _props.id,
-	            name = _props.name,
+	            firstName = _props.firstName,
 	            lastName = _props.lastName,
 	            email = _props.email,
 	            phoneNumber = _props.phoneNumber;
@@ -26690,7 +26695,7 @@
 	            null,
 	            id,
 	            ". ",
-	            name,
+	            firstName,
 	            " ",
 	            lastName,
 	            " ",
@@ -26707,13 +26712,70 @@
 /* 243 */
 /***/ function(module, exports, __webpack_require__) {
 
+	"use strict";
+	
+	var React = __webpack_require__(8);
+	
+	var AddContact = React.createClass({
+	    displayName: "AddContact",
+	
+	    handleSubmit: function handleSubmit(e) {
+	        e.preventDefault();
+	        var contactText = {};
+	
+	        var firstName = this.refs.firstName.value;
+	        var lastName = this.refs.lastName.value;
+	        var email = this.refs.email.value;
+	        var phoneNumber = parseInt(this.refs.phoneNumber.value, 10);
+	
+	        if (firstName && lastName && email && phoneNumber > 0) {
+	            this.refs.firstName.value = "";
+	            this.refs.lastName.value = "";
+	            this.refs.email.value = "";
+	            this.refs.phoneNumber.value = "";
+	            contactText = {
+	                firstName: firstName,
+	                lastName: lastName,
+	                email: email,
+	                phoneNumber: phoneNumber
+	            };
+	            this.props.onAddContact(contactText);
+	        }
+	    },
+	    render: function render() {
+	        return React.createElement(
+	            "div",
+	            null,
+	            React.createElement(
+	                "form",
+	                { onSubmit: this.handleSubmit },
+	                React.createElement("input", { type: "text", ref: "firstName", placeholder: "First Name" }),
+	                React.createElement("input", { type: "text", ref: "lastName", placeholder: "Last Name" }),
+	                React.createElement("input", { type: "text", ref: "email", placeholder: "email" }),
+	                React.createElement("input", { type: "number", ref: "phoneNumber", placeholder: "Phone Number" }),
+	                React.createElement(
+	                    "button",
+	                    { className: "button expanded" },
+	                    "Add Contact"
+	                )
+	            )
+	        );
+	    }
+	});
+	
+	module.exports = AddContact;
+
+/***/ },
+/* 244 */
+/***/ function(module, exports, __webpack_require__) {
+
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(244);
+	var content = __webpack_require__(245);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(246)(content, {});
+	var update = __webpack_require__(247)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -26730,10 +26792,10 @@
 	}
 
 /***/ },
-/* 244 */
+/* 245 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(245)();
+	exports = module.exports = __webpack_require__(246)();
 	// imports
 	
 	
@@ -26744,7 +26806,7 @@
 
 
 /***/ },
-/* 245 */
+/* 246 */
 /***/ function(module, exports) {
 
 	/*
@@ -26800,7 +26862,7 @@
 
 
 /***/ },
-/* 246 */
+/* 247 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
