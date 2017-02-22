@@ -38,11 +38,12 @@ var ContactApp = React.createClass({
         });
     },
     render: function() {
-        var {contacts} = this.state;
+        var {contacts, searchText} = this.state;
+        var filteredContacts = ContactAPI.filterContacts(contacts, searchText);
         return (
             <div>
                 <ContactSearch onSearch={this.handleSearch}/>
-                <ContactList contacts = {contacts}/>
+                <ContactList contacts = {filteredContacts}/>
                 <AddContact onAddContact = {this.handleAddContact}/>
             </div>
         );

@@ -10,7 +10,7 @@ var ContactSearch = React.createClass ({
     render: function () {
         return (
             <div>
-                <input type="search" ref="searchText" placeholder="Search contacts" onChange={this.handleSearch}/>
+                <input type="search" ref="searchText" placeholder="Search contacts by Name" onChange={this.handleSearch}/>
             </div>
         );
     }

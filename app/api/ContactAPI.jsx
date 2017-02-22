@@ -18,5 +18,16 @@ module.exports = {
         }
 
         return $.isArray(contacts) ? contacts : [];
+    },
+    filterContacts: function(contacts, searchText) {
+        var filteredContacts = contacts;
+
+        // Filter by searchText
+        filteredContacts = filteredContacts.filter((contact) => {
+            var firstName = contact.firstName.toLowerCase();
+            return searchText.length === 0 || firstName.indexOf(searchText) > -1;
+        });
+
+        return filteredContacts; 
     }
 };

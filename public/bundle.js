@@ -26633,13 +26633,16 @@
 	        });
 	    },
 	    render: function render() {
-	        var contacts = this.state.contacts;
+	        var _state = this.state,
+	            contacts = _state.contacts,
+	            searchText = _state.searchText;
 	
+	        var filteredContacts = ContactAPI.filterContacts(contacts, searchText);
 	        return React.createElement(
 	            "div",
 	            null,
 	            React.createElement(ContactSearch, { onSearch: this.handleSearch }),
-	            React.createElement(ContactList, { contacts: contacts }),
+	            React.createElement(ContactList, { contacts: filteredContacts }),
 	            React.createElement(AddContact, { onAddContact: this.handleAddContact })
 	        );
 	    }
@@ -35148,7 +35151,7 @@
 	        return React.createElement(
 	            "div",
 	            null,
-	            React.createElement("input", { type: "search", ref: "searchText", placeholder: "Search contacts", onChange: this.handleSearch })
+	            React.createElement("input", { type: "search", ref: "searchText", placeholder: "Search contacts by Name", onChange: this.handleSearch })
 	        );
 	    }
 	});
@@ -35179,25 +35182,19 @@
 	        } catch (e) {}
 	
 	        return $.isArray(contacts) ? contacts : [];
+	    },
+	    filterContacts: function filterContacts(contacts, searchText) {
+	        var filteredContacts = contacts;
+	
+	        // Filter by searchText
+	        filteredContacts = filteredContacts.filter(function (contact) {
+	            var firstName = contact.firstName.toLowerCase();
+	            return searchText.length === 0 || firstName.indexOf(searchText) > -1;
+	        });
+	
+	        return filteredContacts;
 	    }
 	};
-	
-	/*[
-	    {
-	        id: uuid(),
-	        firstName: "Igor",
-	        lastName: "Vukelic",
-	        email: "igvukelic@gmail.com",
-	        phoneNumber: 234545643
-	    }, 
-	    {
-	        id: uuid(),
-	        firstName: "Zrinka",
-	        lastName: "Berdin",
-	        email: "zrinkff@gmail.com",
-	        phoneNumber: 56456456
-	    }
-	]*/
 
 /***/ },
 /* 305 */
