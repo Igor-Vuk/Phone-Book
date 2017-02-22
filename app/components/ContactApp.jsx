@@ -1,21 +1,24 @@
 var React = require("react");
 var ContactList = require("ContactList");
 var AddContact = require("AddContact");
+var ContactSearch = require("ContactSearch");
+var uuid = require("node-uuid");
 
 var ContactApp = React.createClass({
 
     getInitialState: function () {
         return {
+            searchText: "",
             contacts: [
                 {
-                    id: 1,
+                    id: uuid(),
                     firstName: "Igor",
                     lastName: "Vukelic",
                     email: "igvukelic@gmail.com",
                     phoneNumber: 234545643
                 }, 
                 {
-                    id: 2,
+                    id: uuid(),
                     name: "Zrinka",
                     lastName: "Berdin",
                     email: "zrinkff@gmail.com",
@@ -25,12 +28,29 @@ var ContactApp = React.createClass({
         };
     },
     handleAddContact: function (text) {
-        alert("new contact: " + text.firstName + " " + text.lastName + " " + text.email + " " + text.phoneNumber);
+        this.setState({
+            contacts: [
+                ...this.state.contacts, 
+                {
+                    id: uuid(),
+                    firstName: text.firstName,
+                    lastName: text.lastName,
+                    email: text.email,
+                    phoneNumber: text.phoneNumber
+                }
+            ]
+        });
+    },
+    handleSearch: function(searchText) {
+        this.setState({
+            searchText:searchText.toLowerCase()
+        });
     },
     render: function() {
         var {contacts} = this.state;
         return (
             <div>
+                <ContactSearch onSearch={this.handleSearch}/>
                 <ContactList contacts = {contacts}/>
                 <AddContact onAddContact = {this.handleAddContact}/>
             </div>
