@@ -1,31 +1,22 @@
 var React = require("react");
+var uuid = require("node-uuid");
+
 var ContactList = require("ContactList");
 var AddContact = require("AddContact");
 var ContactSearch = require("ContactSearch");
-var uuid = require("node-uuid");
+var ContactAPI = require("ContactAPI");
+
 
 var ContactApp = React.createClass({
 
     getInitialState: function () {
         return {
             searchText: "",
-            contacts: [
-                {
-                    id: uuid(),
-                    firstName: "Igor",
-                    lastName: "Vukelic",
-                    email: "igvukelic@gmail.com",
-                    phoneNumber: 234545643
-                }, 
-                {
-                    id: uuid(),
-                    name: "Zrinka",
-                    lastName: "Berdin",
-                    email: "zrinkff@gmail.com",
-                    phoneNumber: 56456456
-                }
-            ]
+            contacts: ContactAPI.getContacts()
         };
+    },
+    componentDidUpdate: function() {
+        ContactAPI.setContacts(this.state.contacts);
     },
     handleAddContact: function (text) {
         this.setState({
