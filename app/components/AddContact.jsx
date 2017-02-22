@@ -26,7 +26,7 @@ var AddContact = React.createClass({
     },
     render: function () {
         return (
-            <div>
+            <div className="container__footer">
                 <form onSubmit = {this.handleSubmit}>
                     <input type="text" ref="firstName" placeholder="First Name"/>
                     <input type="text" ref="lastName" placeholder="Last Name"/>

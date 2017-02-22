@@ -42,9 +42,17 @@ var ContactApp = React.createClass({
         var filteredContacts = ContactAPI.filterContacts(contacts, searchText);
         return (
             <div>
-                <ContactSearch onSearch={this.handleSearch}/>
-                <ContactList contacts = {filteredContacts}/>
-                <AddContact onAddContact = {this.handleAddContact}/>
+                <h1 className="page-title">Phone Book</h1>
+
+                <div className="row">
+                    <div className="column small-centered small-11 medium-6 large-7">
+                        <div className = "container">
+                            <ContactSearch onSearch={this.handleSearch}/>
+                            <ContactList contacts = {filteredContacts}/>
+                            <AddContact onAddContact = {this.handleAddContact}/>
+                        </div>
+                    </div>
+                </div>
             </div>
         );
     }

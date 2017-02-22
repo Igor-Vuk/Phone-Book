@@ -34,4 +34,12 @@ describe("ContactList", () => {
 
         expect(contactsComponents.length).toBe(contacts.length);
     });
+
+    it("should render 'Currently no contacts message' if no contacts", () =>{
+        var contacts = [];
+        var contactList = TestUtils.renderIntoDocument(<ContactList  contacts={contacts}/>);
+        var $el = $(ReactDOM.findDOMNode(contactList));
+
+        expect($el.find(".container__message").length).toBe(1)
+    });
 });
