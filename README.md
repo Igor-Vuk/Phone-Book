@@ -1,5 +1,5 @@
-# Contact Book #
-## React, Node, Mongo Contact Book app for storing your contacts##
+# Phone Book#
+## React, Node, Mongo Phone Book app for storing your contacts ##
 - - - -
 ### Included ###
 * webpack
