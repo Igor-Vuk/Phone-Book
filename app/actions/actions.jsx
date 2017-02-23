@@ -4,3 +4,13 @@ export var setSearchText = (searchText) => {
         searchText
     };
 };
+
+export var addContact = (firstName, lastName, email, phoneNumber) => {
+    return {
+        type: "ADD_CONTACT",
+        firstName, 
+        lastName, 
+        email, 
+        phoneNumber
+    };
+};
