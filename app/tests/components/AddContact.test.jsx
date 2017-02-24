@@ -41,7 +41,7 @@ describe("AddContact", () => {
         expect(spy).toHaveBeenCalledWith(action);
     });
 
-    it("should not dispatch ADD_TODO when invalid todo text", () => {
+    it("should not dispatch ADD_CONTACT when invalid contact text", () => {
         var spy = expect.createSpy();
         var addContact = TestUtils.renderIntoDocument(<AddContact dispatch = {spy}/>);
         var $el = $(ReactDOM.findDOMNode(addContact));

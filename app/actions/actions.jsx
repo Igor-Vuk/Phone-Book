@@ -14,3 +14,10 @@ export var addContact = (firstName, lastName, email, phoneNumber) => {
         phoneNumber
     };
 };
+
+export var addContacts = (contacts) => {
+    return {
+        type: "ADD_CONTACTS",
+        contacts
+    }
+};

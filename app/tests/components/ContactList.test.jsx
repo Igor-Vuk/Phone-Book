@@ -31,7 +31,7 @@ describe("ContactList", () => {
             }
         ];
         var store = configure({
-            contacts: contacts
+            contacts
         });
         var provider = TestUtils.renderIntoDocument (
             <Provider store={store}>

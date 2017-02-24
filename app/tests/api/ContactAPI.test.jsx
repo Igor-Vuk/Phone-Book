@@ -29,7 +29,7 @@ describe ("ContactAPI", () => {
             expect(actualContacts).toEqual(contacts);
         });
 
-        it("should not set invalid todos array", () => {
+        it("should not set invalid contacts array", () => {
             var badContacts = {a: "b"};
             ContactAPI.setContacts(badContacts);
 

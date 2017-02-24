@@ -23,6 +23,11 @@ export var contactsReducer = (state=[], action) => {
                 phoneNumber: action.phoneNumber
             }
         ];
+    case "ADD_CONTACTS":
+        return [
+            ...state,
+            action.contacts
+        ];
     default:
         return state;
     }
