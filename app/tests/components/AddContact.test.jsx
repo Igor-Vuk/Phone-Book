@@ -4,23 +4,14 @@ var TestUtils = require("react-addons-test-utils");
 var expect = require("expect");
 var $ = require("jquery");
 
-var AddContact = require("AddContact");
+var {AddContact} = require("AddContact");
 
 describe("AddContact", () => {
     it("should exist", () => {
         expect(AddContact).toExist();
     });
 
-    it("should call onAddContact prop with valid data", () => {
-        var spy = expect.createSpy();
-        var addContact = TestUtils.renderIntoDocument(<AddContact onAddContact = {spy}/>);
-        var $el = $(ReactDOM.findDOMNode(addContact));
-
-        addContact.refs.firstName.value = "Dino";
-        addContact.refs.lastName.value = "Horvat";
-        addContact.refs.email.value = "drv@gmail.com";
-        addContact.refs.phoneNumber.value = 56456456;
-
+    it("should dispatch ADD_CONTACT when valid contact text", () => {
         var contactText = {
             firstName:"Dino",
             lastName:"Horvat",
@@ -28,15 +19,31 @@ describe("AddContact", () => {
             phoneNumber: 56456456
         };
 
+        var action = {
+            type: "ADD_CONTACT",
+            firstName: contactText.firstName,
+            lastName: contactText.lastName,
+            email: contactText.email,
+            phoneNumber: contactText.phoneNumber
+        };
+
+        var spy = expect.createSpy();
+        var addContact = TestUtils.renderIntoDocument(<AddContact dispatch = {spy}/>);
+        var $el = $(ReactDOM.findDOMNode(addContact));
+
+        addContact.refs.firstName.value = "Dino";
+        addContact.refs.lastName.value = "Horvat";
+        addContact.refs.email.value = "drv@gmail.com";
+        addContact.refs.phoneNumber.value = 56456456;
 
         TestUtils.Simulate.submit($el.find("form")[0]);
 
-        expect(spy).toHaveBeenCalledWith(contactText);
+        expect(spy).toHaveBeenCalledWith(action);
     });
 
-    it("should not call onAddContact prop when invalid input", () => {
+    it("should not dispatch ADD_TODO when invalid todo text", () => {
         var spy = expect.createSpy();
-        var addContact = TestUtils.renderIntoDocument(<AddContact onAddContact = {spy}/>);
+        var addContact = TestUtils.renderIntoDocument(<AddContact dispatch = {spy}/>);
         var $el = $(ReactDOM.findDOMNode(addContact));
 
         addContact.refs.firstName.value = "";

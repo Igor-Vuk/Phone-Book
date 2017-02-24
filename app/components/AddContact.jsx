@@ -1,8 +1,11 @@
 var React = require("react");
+var {connect} = require("react-redux");
+var actions = require("actions");
 
-var AddContact = React.createClass({
+export var AddContact = React.createClass({
     handleSubmit: function (e) {
         e.preventDefault();
+        var {dispatch} = this.props;
         var contactText = {};
 
         var firstName = this.refs.firstName.value;
@@ -15,13 +18,8 @@ var AddContact = React.createClass({
             this.refs.lastName.value = "";
             this.refs.email.value = "";
             this.refs.phoneNumber.value = "";
-            contactText= {
-                firstName:firstName,
-                lastName:lastName,
-                email:email,
-                phoneNumber:phoneNumber
-            };
-            this.props.onAddContact(contactText);
+            
+            dispatch(actions.addContact(firstName, lastName, email, phoneNumber));
         }
     },
     render: function () {
@@ -39,4 +37,4 @@ var AddContact = React.createClass({
     }
 });
 
-module.exports = AddContact;
+export default connect()(AddContact);

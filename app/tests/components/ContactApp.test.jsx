@@ -1,32 +1,30 @@
 var React = require("react");
 var ReactDOM = require("react-dom");
+var {Provider} = require("react-redux");
 var TestUtils = require("react-addons-test-utils");
 var expect = require("expect");
 var $ = require("jquery");
 
+var configureStore = require("configureStore");
 var ContactApp = require("ContactApp");
+import ContactList from "ContactList";
 
 describe("ContactApp", () => {
     it("should exist", () => {
         expect(ContactApp).toExist();
     });
 
-    it("should add contact to the contacts state on handleAddContact", ()=> {
-        var contactText = {
-            firstName: "Ivan",
-            lastName: "Hrlek",
-            email: "hrln@gmail.com",
-            phoneNumber: 975568845
-        };
-        var contactApp = TestUtils.renderIntoDocument(<ContactApp/>);
-        contactApp.setState({
-            contacts: []
-        });
-        contactApp.handleAddContact(contactText);
+    it("should render ContactList", () => {
+        var store = configureStore.configure();
+        var provider = TestUtils.renderIntoDocument(
+            <Provider store={store}>
+                <ContactApp/>
+            </Provider>
+        );
 
-        expect(contactApp.state.contacts[0].firstName).toBe("Ivan");
-        expect(contactApp.state.contacts[0].lastName).toBe("Hrlek");
-        expect(contactApp.state.contacts[0].email).toBe("hrln@gmail.com");
-        expect(contactApp.state.contacts[0].phoneNumber).toBe(975568845);
+        var contactApp = TestUtils.scryRenderedComponentsWithType(provider, ContactApp)[0];
+        var contactList = TestUtils.scryRenderedComponentsWithType(contactApp, ContactList);
+
+        expect(contactList.length).toEqual(1);
     });
 });

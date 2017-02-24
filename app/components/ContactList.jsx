@@ -1,7 +1,8 @@
 var React = require("react");
-var Contact = require("Contact");
+var {connect} = require("react-redux");
+import Contact from "Contact";
 
-var ContactList = React.createClass({
+export var ContactList = React.createClass({
     render: function () {
         var {contacts} = this.props;
         var renderContacts = () => {
@@ -26,4 +27,10 @@ var ContactList = React.createClass({
     }
 });
 
-module.exports = ContactList;
+export default connect(
+    (state) => {
+        return {
+            contacts: state.contacts
+        };
+    }
+)(ContactList);

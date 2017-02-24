@@ -1,8 +1,8 @@
 var React = require("react");
 var uuid = require("node-uuid");
 
-var ContactList = require("ContactList");
-var AddContact = require("AddContact");
+import ContactList from "ContactList";
+import AddContact from "AddContact";
 var ContactSearch = require("ContactSearch");
 var ContactAPI = require("ContactAPI");
 
@@ -59,3 +59,6 @@ var ContactApp = React.createClass({
 });
 
 module.exports = ContactApp;
+
+
+{/*<ContactList contacts = {filteredContacts}/>*/}

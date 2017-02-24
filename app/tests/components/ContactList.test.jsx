@@ -1,11 +1,13 @@
 var React = require("react");
 var ReactDOM = require("react-dom");
+var {Provider} = require("react-redux");
 var TestUtils = require("react-addons-test-utils");
 var expect = require("expect");
 var $ = require("jquery");
 
-var ContactList = require("ContactList");
-var Contact = require("Contact");
+import {configure} from "configureStore";
+import ConnectedContactList, {ContactList} from "ContactList";
+import ConnectedContact, {Contact} from "Contact";
 
 describe("ContactList", () => {
     it("should exist", () => {
@@ -28,9 +30,16 @@ describe("ContactList", () => {
                 phoneNumber: 56456456
             }
         ];
-        var contactList = TestUtils.renderIntoDocument(<ContactList  contacts={contacts}/>);
-        // select all Contact components inside contactList
-        var contactsComponents = TestUtils.scryRenderedComponentsWithType(contactList, Contact);
+        var store = configure({
+            contacts: contacts
+        });
+        var provider = TestUtils.renderIntoDocument (
+            <Provider store={store}>
+                <ConnectedContactList/>
+            </Provider>
+        );
+        var contactList = TestUtils.scryRenderedComponentsWithType(provider, ConnectedContactList)[0]; 
+        var contactsComponents = TestUtils.scryRenderedComponentsWithType(contactList, ConnectedContact);
 
         expect(contactsComponents.length).toBe(contacts.length);
     });

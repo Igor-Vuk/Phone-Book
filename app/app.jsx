@@ -1,5 +1,6 @@
 var React = require("react");
 var ReactDOM = require("react-dom");
+var {Provider} = require("react-redux");
 var {Route, Router, IndexRoute, browserHistory} = require("react-router");
 
 var ContactApp = require("ContactApp");
@@ -32,6 +33,10 @@ $(document).foundation();
 require("style!css!sass!applicationStyles");
 
 ReactDOM.render(
-    <ContactApp/>,
+    //Provider lets children components to use the store
+    //We use store attribute to reference to store we defined above
+    <Provider store={store}>
+        <ContactApp/>
+    </Provider>,
     document.getElementById("app")
 );
