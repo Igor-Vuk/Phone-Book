@@ -4,27 +4,19 @@ var {Provider} = require("react-redux");
 var {Route, Router, IndexRoute, browserHistory} = require("react-router");
 
 var ContactApp = require("ContactApp");
-
-
-
 var actions = require("actions");
 var store = require("configureStore").configure();
+var ContactAPI = require("ContactAPI");
 
 store.subscribe(()=> {
-    console.log("New state", store.getState());
+    var state = store.getState();
+    console.log("New state", state);
+    ContactAPI.setContacts(state.contacts);
 });
 
-store.dispatch(actions.addContact(
-    "Goran",
-    "Čavić",
-    "grc@gmail.com",
-    3468876645
-));
-store.dispatch(actions.setSearchText("Goran"));
 
-
-
-
+var initialContacts = ContactAPI.getContacts();
+store.dispatch(actions.addContacts(initialContacts));
 
 //Load foundation
 $(document).foundation();

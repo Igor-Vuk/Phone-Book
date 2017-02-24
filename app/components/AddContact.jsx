@@ -6,7 +6,6 @@ export var AddContact = React.createClass({
     handleSubmit: function (e) {
         e.preventDefault();
         var {dispatch} = this.props;
-        var contactText = {};
 
         var firstName = this.refs.firstName.value;
         var lastName = this.refs.lastName.value;

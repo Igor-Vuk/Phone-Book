@@ -108,16 +108,18 @@
 	    browserHistory = _require2.browserHistory;
 	
 	var ContactApp = __webpack_require__(276);
-	
 	var actions = __webpack_require__(281);
 	var store = __webpack_require__(342).configure();
+	var ContactAPI = __webpack_require__(279);
 	
 	store.subscribe(function () {
-	    console.log("New state", store.getState());
+	    var state = store.getState();
+	    console.log("New state", state);
+	    ContactAPI.setContacts(state.contacts);
 	});
 	
-	store.dispatch(actions.addContact("Goran", "Čavić", "grc@gmail.com", 3468876645));
-	store.dispatch(actions.setSearchText("Goran"));
+	var initialContacts = ContactAPI.getContacts();
+	store.dispatch(actions.addContacts(initialContacts));
 	
 	//Load foundation
 	$(document).foundation();
@@ -28893,19 +28895,19 @@
 	                { className: "row" },
 	                React.createElement(
 	                    "div",
-	                    { className: "column large-4 padd" },
+	                    { className: "column large-4" },
 	                    firstName,
 	                    " ",
 	                    lastName
 	                ),
 	                React.createElement(
 	                    "div",
-	                    { className: "column large-4 padd" },
+	                    { className: "column large-4" },
 	                    email
 	                ),
 	                React.createElement(
 	                    "div",
-	                    { className: "column large-4 padd" },
+	                    { className: "column large-4" },
 	                    phoneNumber
 	                )
 	            )
@@ -28913,6 +28915,7 @@
 	    }
 	});
 	
+	// export default connect()(Contact);
 	module.exports = Contact;
 
 /***/ },
@@ -28977,7 +28980,6 @@
 	        e.preventDefault();
 	        var dispatch = this.props.dispatch;
 	
-	        var contactText = {};
 	
 	        var firstName = this.refs.firstName.value;
 	        var lastName = this.refs.lastName.value;
@@ -37514,7 +37516,7 @@
 	                phoneNumber: action.phoneNumber
 	            }]);
 	        case "ADD_CONTACTS":
-	            return [].concat(_toConsumableArray(state), [action.contacts]);
+	            return [].concat(_toConsumableArray(state), _toConsumableArray(action.contacts));
 	        default:
 	            return state;
 	    }

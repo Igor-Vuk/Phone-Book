@@ -26,7 +26,7 @@ export var contactsReducer = (state=[], action) => {
     case "ADD_CONTACTS":
         return [
             ...state,
-            action.contacts
+            ...action.contacts
         ];
     default:
         return state;

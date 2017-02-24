@@ -19,5 +19,5 @@ export var addContacts = (contacts) => {
     return {
         type: "ADD_CONTACTS",
         contacts
-    }
+    };
 };

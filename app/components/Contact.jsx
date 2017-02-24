@@ -7,14 +7,14 @@ var Contact = React.createClass({
             <div className = "contact-added">
 
                 <div className="row">
-                    <div className="column large-4 padd">
+                    <div className="column large-4">
                         {firstName} {lastName} 
                     </div>
                     
-                    <div className="column large-4 padd">
+                    <div className="column large-4">
                         {email} 
                     </div> 
-                    <div className="column large-4 padd">
+                    <div className="column large-4">
                         {phoneNumber}
                     </div>
                 </div>
@@ -23,4 +23,5 @@ var Contact = React.createClass({
     }
 });
 
+// export default connect()(Contact);
 module.exports = Contact;
