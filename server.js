@@ -47,6 +47,7 @@ app.get("/contacts", (req, res) => {
 });
 
 
+
 //to use browser history
 app.get("*", function(req, res) {
     res.sendFile(PATH.resolve(__dirname, "public", "index.html"));
