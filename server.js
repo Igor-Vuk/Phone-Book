@@ -3,7 +3,7 @@ var app = express();
 var bodyParser = require("body-parser");
 
 var {mongoose} = require("./server/db/mongoose");
-var {Contact} = require("./server/models/contact")
+var {Contact} = require("./server/models/contact");
 
 const PATH = require("path");
 const PORT = process.env.PORT || 3000;
@@ -33,15 +33,23 @@ app.post("/contacts", (req, res) => {
     newContact.save().then((doc) => {
         res.send(doc);
     }, (e) => {
-        res.send(e);
+        res.status(400).send(e);
     });
 });
 
 
+app.get("/contacts", (req, res) => {
+    Contact.find().then((contacts) => {
+        res.send({contacts});
+    }, (e) => {
+        res.status(400).send(e);
+    });
+});
+
 
 //to use browser history
 app.get("*", function(req, res) {
-    res.sendFile(PATH.resolve(__dirname, "public", "index.html"))
+    res.sendFile(PATH.resolve(__dirname, "public", "index.html"));
 });
 
 
