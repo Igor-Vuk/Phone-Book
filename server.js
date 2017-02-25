@@ -1,6 +1,10 @@
 var express = require("express");
-// Create our app
 var app = express();
+var bodyParser = require("body-parser");
+
+var {mongoose} = require("./server/db/mongoose");
+var {Contact} = require("./server/models/contact")
+
 const PATH = require("path");
 const PORT = process.env.PORT || 3000;
 
@@ -12,15 +16,33 @@ app.use(function (req, res, next) {
     }
 });
 
+app.use(bodyParser.json());
 
 app.use(express.static("public"));
+
+
+//ROUTES
+app.post("/contacts", (req, res) => {
+    var newContact = new Contact({
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        email: req.body.email,
+        phoneNumber: req.body.phoneNumber
+    });
+
+    newContact.save().then((doc) => {
+        res.send(doc);
+    }, (e) => {
+        res.send(e);
+    });
+});
+
+
 
 //to use browser history
 app.get("*", function(req, res) {
     res.sendFile(PATH.resolve(__dirname, "public", "index.html"))
-})
-
-
+});
 
 
 app.listen(PORT, function () {
