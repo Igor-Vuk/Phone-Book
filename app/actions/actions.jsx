@@ -3,9 +3,9 @@ var axios = require("axios");
 //API endpoint
 //-------------------
 //post/get data
-const SET_CONTACTS = "http://localhost:3000/contacts";
+const SET_CONTACTS = "/contacts";
 //delete data
-const DEL_CONTACTS = "http://localhost:3000/contacts/id";
+const DEL_CONTACTS = "/contacts/id";
 
 
 //ACTIONS

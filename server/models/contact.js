@@ -21,7 +21,10 @@ var Contact = mongoose.model("Contact", {
         trim: true
     },
     phoneNumber: {
-        type: Number 
+        type: Number,
+        required: true,
+        minlength:1,
+        trim: true 
     }
 });
 

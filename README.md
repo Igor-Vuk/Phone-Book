@@ -26,13 +26,23 @@
 * GitBash
 * Mongo
 
+### Starting the app in local environment ###
+1. run npm install
+2. run mongod from terminal
+3. run webpack (this will generate bundle file)
+4. run node server.js
+
 ### Linter ###
 * ESLint
 
 ### API endpoint ###
-#### save data ####
-* "http://localhost:3000/contacts";
-#### retrieve data ####
-* "http://localhost:3000/contacts";
-#### delete data ####
-* "http://localhost:3000/contacts/id";
+**save data** 
+* "/contacts";
+**retrieve data**
+* "/contacts";
+**delete data**
+* "/contacts/id";
+
+### Example pictures ###
+![picture alt](http://i64.tinypic.com/2myx9qu.jpg "List")
+![picture alt](http://i65.tinypic.com/2ldvp5y.png "List")

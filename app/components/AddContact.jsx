@@ -11,7 +11,8 @@ export var AddContact = React.createClass({
         var firstName = this.refs.firstName.value;
         var lastName = this.refs.lastName.value;
         var email = this.refs.email.value;
-        var phoneNumber = this.refs.phoneNumber.value;
+        //remove all white space 
+        var phoneNumber = this.refs.phoneNumber.value.replace(/\s+/g, "");
 
         if(firstName && lastName && email && phoneNumber > 0) {
             this.refs.firstName.value = "";
