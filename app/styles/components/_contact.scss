@@ -1,10 +1,13 @@
 .contact-added {
     padding: 1rem;
     transition: background .2s ease;
-    color: $light-blue;
+    color: $medium-grey;
     
     &:hover {
         background: #f0f0f0;
+    }
+    span {
+        font-style: italic;
     }
 }
 

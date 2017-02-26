@@ -13,7 +13,8 @@ module.exports = {
     plugins: [
         new webpack.ProvidePlugin({
             "$": "jquery",
-            "jQuery": "jquery"
+            "jQuery": "jquery",
+            "jquery": "jquery"
         })    
     ],
     output: {
@@ -43,7 +44,11 @@ module.exports = {
                     presets: ["react", "es2015", "stage-0"]
                 },
                 test: /\.jsx?$/,
-                exclude:/(node_modules|bower_components)/
+                exclude:/(node_modules)/
+            },
+            {
+                test: /\.scss$/,
+                loader: "style!css!sass"
             }
         ]
     },

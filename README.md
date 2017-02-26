@@ -1,6 +1,14 @@
 # Phone Book#
-## React, Node, Mongo Phone Book app for storing your contacts ##
+## A simple Phone Book app for storing your contacts ##
 - - - -
+
+### Using ###
+* React
+* Redux
+* NodeJS
+* MongoDB
+* Mongoose
+
 ### Included ###
 * webpack
 * jQuery
@@ -8,33 +16,23 @@
 * SCSS
 * source maps
 * browser history
-* tests
 
-### Testing ###
-* karma
-* mocha
-* expect
-* to start the tests run ```npm test```
 
 ### Global dependencies ###
-* webpack => run webpack from command line
+* webpack 
 
 ### Requirements ###
 * Node.js
 * GitBash
+* Mongo
 
 ### Linter ###
 * ESLint
 
-### Working ###
-Contact.jsx component is gonna get rendered by ContactList.jsx
-ContactApp.jsx is gonna pass array to ContactList.jsx and ContactList.jsx is gonna render multiple Contact.jsx
-
-### For developers ###
-* test files are stores inside app/test/components folder
-* to start the tests run ```npm test```
-
-#### Testing ####
-* karma
-* mocha
-* expect
+### API endpoint ###
+#### save data ####
+* "http://localhost:3000/contacts";
+#### retrieve data ####
+* "http://localhost:3000/contacts";
+#### delete data ####
+* "http://localhost:3000/contacts/id";

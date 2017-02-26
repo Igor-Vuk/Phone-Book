@@ -2,6 +2,7 @@ var React = require("react");
 var {connect} = require("react-redux");
 var actions = require("actions");
 
+
 export var AddContact = React.createClass({
     handleSubmit: function (e) {
         e.preventDefault();
@@ -21,6 +22,7 @@ export var AddContact = React.createClass({
             dispatch(actions.startAddContact(firstName, lastName, email, phoneNumber));
         }
     },
+
     render: function () {
         return (
             <div className="container__footer">
@@ -28,7 +30,7 @@ export var AddContact = React.createClass({
                     <input type="text" ref="firstName" placeholder="First Name"/>
                     <input type="text" ref="lastName" placeholder="Last Name"/>
                     <input type="email" ref="email" placeholder="email"/>
-                    <input type="tel" ref="phoneNumber" placeholder="Phone Number" pattern="[0-9]*"/>
+                    <input type="tel" ref="phoneNumber" placeholder="Phone Number"/>
                     <button className="button expanded">Add Contact</button>
                 </form>
             </div>

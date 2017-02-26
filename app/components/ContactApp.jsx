@@ -1,9 +1,7 @@
 var React = require("react");
-
 import ContactList from "ContactList";
 import AddContact from "AddContact";
 import ContactSearch from "ContactSearch";
-
 
 
 var ContactApp = React.createClass({
@@ -13,7 +11,7 @@ var ContactApp = React.createClass({
                 <h1 className="page-title">Phone Book</h1>
 
                 <div className="row">
-                    <div className="column small-centered small-11 medium-6 large-7">
+                    <div className="column small-centered small-11 medium-8 large-8">
                         <div className = "container">
                             <ContactSearch/>
                             <ContactList/>
@@ -27,4 +25,3 @@ var ContactApp = React.createClass({
 });
 
 module.exports = ContactApp;
-

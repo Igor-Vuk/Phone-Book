@@ -1,5 +1,6 @@
 var mongoose = require("mongoose");
 
+//Mongoose Model
 var Contact = mongoose.model("Contact", {
     firstName: {
         type: String,

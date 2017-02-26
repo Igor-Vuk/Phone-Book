@@ -1,4 +1,5 @@
-var uuid = require("node-uuid");
+//REDUCERS
+//--------------
 
 export var searchTextReducer = (state="", action) => {
     switch (action.type) {
@@ -8,7 +9,6 @@ export var searchTextReducer = (state="", action) => {
         return state;
     }
 }; 
-
 
 export var contactsReducer = (state=[], action) => {
     switch (action.type) {
@@ -22,6 +22,11 @@ export var contactsReducer = (state=[], action) => {
             ...state,
             ...action.contacts
         ];
+    case "DELETE_CONTACT":
+        //using the JS array filter method to remove a specific element from an array without mutating the original state
+        return state.filter((contact) => {
+            return contact.id !== action.id._id;
+        });
     default:
         return state;
     }

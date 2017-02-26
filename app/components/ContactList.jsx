@@ -1,7 +1,8 @@
 var React = require("react");
+var SearchContacts = require("SearchContacts");
 var {connect} = require("react-redux");
 import Contact from "Contact";
-var SearchContacts = require("SearchContacts");
+
 
 export var ContactList = React.createClass({
     render: function () {

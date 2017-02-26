@@ -1,8 +1,15 @@
 var axios = require("axios");
+
 //API endpoint
+//-------------------
+//post/get data
 const SET_CONTACTS = "http://localhost:3000/contacts";
+//delete data
+const DEL_CONTACTS = "http://localhost:3000/contacts/id";
 
 
+//ACTIONS
+//-------------------
 export var setSearchText = (searchText) => {
     return {
         type: "SET_SEARCH_TEXT",
@@ -35,8 +42,7 @@ export var startAddContact = (firstName, lastName, email, phoneNumber) => {
         }).then((res) => {
             dispatch(addContact({
                 ...contact,
-                //mongo automatically creates id when we save data in the db. Here, we just pull it out 
-                //we need id because in ContactList.jsx every contact needs a key
+                //mongo automatically creates id when we save data in the db. Here, we just pull it out. We need id because in ContactList.jsx every contact needs a key
                 id: res.data._id
             }));
         });
@@ -53,7 +59,7 @@ export var addContacts = (contacts) => {
 export var startAddContacts = () => {
     return(dispatch, getState) => {
 
-        //fetch data from mongodb
+        //retrieve data from mongodb
         axios.get(SET_CONTACTS).then((res) => {
             var contacts = res.data.contacts;
             var arrContacts = [];
@@ -65,5 +71,29 @@ export var startAddContacts = () => {
             });
             dispatch(addContacts(arrContacts));
         });
+    };
+};
+
+export var deleteContact = (id) => {
+    return {
+        type: "DELETE_CONTACT",
+        id
+    };
+};
+
+export var startDeleteContact = (id) => {
+    return (dispatch, getState) => {
+
+        //delete data from mongodb
+        axios({
+            method: "delete", 
+            url: DEL_CONTACTS, 
+            data: {
+                id: id
+            }
+        }).then((res) => {
+            var delContact = res.data.contact;
+            dispatch(deleteContact(delContact));
+        });        
     };
 };

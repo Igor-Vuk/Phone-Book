@@ -7,15 +7,19 @@ var ContactApp = require("ContactApp");
 var actions = require("actions");
 var store = require("configureStore").configure();
 
-
+//Monitor change of state
+store.subscribe(() => {
+    var state = store.getState();
+    console.log("New state", state);
+});
 
 store.dispatch(actions.startAddContacts());
 
 //Load foundation
 $(document).foundation();
 
-//App css
-require("style!css!sass!applicationStyles");
+//app.scss
+require("applicationStyles");
 
 ReactDOM.render(
     //Provider lets children components to use the store

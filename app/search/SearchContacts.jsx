@@ -1,5 +1,4 @@
 module.exports = {
-    
     filterContacts: function(contacts, searchText) {
         var filteredContacts = contacts;
 

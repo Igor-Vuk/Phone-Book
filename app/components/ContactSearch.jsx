@@ -7,7 +7,7 @@ export var ContactSearch = React.createClass ({
         var {dispatch, searchText} = this.props;
         return (
             <div className="container__header">
-                <input type="search" ref="searchText" placeholder="Search contacts by Name" value={searchText} onChange={() => {
+                <input type="search" ref="searchText" placeholder="Search Contacts by Name" value={searchText} onChange={() => {
                     var searchText = this.refs.searchText.value;
                     dispatch(actions.setSearchText(searchText));
                 }}/>
