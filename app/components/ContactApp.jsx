@@ -1,5 +1,4 @@
 var React = require("react");
-var uuid = require("node-uuid");
 
 import ContactList from "ContactList";
 import AddContact from "AddContact";

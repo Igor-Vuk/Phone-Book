@@ -15,13 +15,7 @@ export var contactsReducer = (state=[], action) => {
     case "ADD_CONTACT":
         return [
             ...state,
-            {
-                id: uuid(),
-                firstName: action.firstName,
-                lastName: action.lastName,
-                email: action.email,
-                phoneNumber: action.phoneNumber
-            }
+            action.contact
         ];
     case "ADD_CONTACTS":
         return [

@@ -1,22 +1,15 @@
 var React = require("react");
 var ReactDOM = require("react-dom");
 var {Provider} = require("react-redux");
-var {Route, Router, IndexRoute, browserHistory} = require("react-router");
+
 
 var ContactApp = require("ContactApp");
 var actions = require("actions");
 var store = require("configureStore").configure();
-var ContactAPI = require("ContactAPI");
-
-store.subscribe(()=> {
-    var state = store.getState();
-    console.log("New state", state);
-    ContactAPI.setContacts(state.contacts);
-});
 
 
-var initialContacts = ContactAPI.getContacts();
-store.dispatch(actions.addContacts(initialContacts));
+
+store.dispatch(actions.startAddContacts());
 
 //Load foundation
 $(document).foundation();

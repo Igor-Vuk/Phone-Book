@@ -11,10 +11,10 @@ var Contact = React.createClass({
                         {firstName} {lastName} 
                     </div>
                     
-                    <div className="column large-4">
+                    <div className="column large-3">
                         {email} 
                     </div> 
-                    <div className="column large-4">
+                    <div className="column large-3">
                         {phoneNumber}
                     </div>
                 </div>

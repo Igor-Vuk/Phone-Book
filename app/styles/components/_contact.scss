@@ -2,11 +2,14 @@
     padding: 1rem;
     transition: background .2s ease;
     color: $light-blue;
-
+    
     &:hover {
         background: #f0f0f0;
     }
-
-   
 }
 
+@media (max-width: 1024px) {
+    .contact-added {
+        text-align: center;
+    }
+}
