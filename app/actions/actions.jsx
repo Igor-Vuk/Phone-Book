@@ -3,9 +3,9 @@ var axios = require("axios");
 //API endpoints
 //-------------------
 //post/get data
-const SET_CONTACTS = "/contacts";
+const SET_CONTACTS = "https://small-phonebook.herokuapp.com/contacts";
 //delete data
-const DEL_CONTACTS = "/contacts/id";
+const DEL_CONTACTS = "https://small-phonebook.herokuapp.com/contacts/id";
 
 
 //ACTIONS
