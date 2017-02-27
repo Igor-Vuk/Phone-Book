@@ -4,7 +4,7 @@ var mongoose = require("mongoose");
 mongoose.Promise = global.Promise;
 
 // if environment variable gets broken we use localhost as backup
-var url = process.env.DATABASE_URL || "mongodb://localhost:27017/ContactApp";
+var url = "mongodb://igor:4Dfz8R@ds161049.mlab.com:61049/phone_book";
 mongoose.connect(url);
 
 
