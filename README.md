@@ -37,11 +37,11 @@
 
 ### API endpoint ###
 * **save data** 
-* "/contacts";
+* "/contacts"
 * **retrieve data**
-* "/contacts";
+* "/contacts"
 * **delete data**
-* "/contacts/id";
+* "/contacts/id"
 
 ### Example pictures ###
 ![picture alt](http://i64.tinypic.com/2myx9qu.jpg "List")
