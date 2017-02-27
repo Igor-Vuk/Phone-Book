@@ -8,6 +8,15 @@ var {Contact} = require("./server/models/contact");
 const PATH = require("path");
 const PORT = process.env.PORT || 3000;
 
+app.use(function (req, res, next){
+    if (req.headers["x-forwarded-proto"] === "https") {
+        res.redirect("http://" + req.hostname + req.url);
+    } else {
+        next();
+    }
+});
+
+
 app.use(bodyParser.json());
 
 app.use(express.static("public"));
@@ -56,9 +65,9 @@ app.delete("/contacts/id", (req, res) => {
 
 
 //to use browser history
-/*app.get("*", function(req, res) {
+app.get("*", function(req, res) {
     res.sendFile(PATH.resolve(__dirname, "public", "index.html"));
-});*/
+});
 
 
 app.listen(PORT, function () {
