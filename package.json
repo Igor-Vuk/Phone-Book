@@ -1,7 +1,7 @@
 {
   "name": "phonebook",
   "version": "1.0.0",
-  "description": "React Contact Book App",
+  "description": "React Phone Book App",
   "main": "index.js",
   "scripts": {
     "build": "webpack",
