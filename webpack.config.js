@@ -1,14 +1,5 @@
 var webpack = require("webpack");
 var path = require("path");
-var envFile = require("node-env-file");
-
-process.env.NODE_ENV = process.env.NODE_ENV || "development";
-
-try {
-    envFile(path.join(__dirname, "config/" + process.env.NODE_ENV + ".env"));
-} catch (e) {
-
-}
 
 module.exports = {
     entry: [
@@ -24,18 +15,7 @@ module.exports = {
             "$": "jquery",
             "jQuery": "jquery",
             "jquery": "jquery"
-        }),
-        new webpack.optimize.UglifyJsPlugin({
-            compressor: {
-                warnings: false
-            }
-        }),
-        new webpack.DefinePlugin({
-            "process.env": {
-                NODE_ENV: JSON.stringify(process.env.NODE_ENV),
-                DATABASE_URL: JSON.stringify(process.env.DATABASE_URL)
-            }
-        })    
+        }),   
     ],
     output: {
         path: __dirname,

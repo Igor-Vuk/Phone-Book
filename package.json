@@ -4,8 +4,7 @@
   "description": "React Phone Book App",
   "main": "index.js",
   "scripts": {
-    "build": "webpack",
-    "start": "npm run build && node server.js"
+    "start": "node server.js"
   },
   "author": "Igor Vukelić",
   "license": "MIT",
