@@ -57,5 +57,5 @@ module.exports = {
             path.resolve(__dirname, "./node_modules/foundation-sites/scss")
         ]
     },
-    devtool: "#source-maps"
+    devtool: process.env.NODE_ENV === "production" ? undefined : "#source-maps"
 };

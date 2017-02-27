@@ -6,8 +6,16 @@
   "scripts": {
     "start": "node server.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Igor-Vuk/Phone-Book.git"
+  },
   "author": "Igor Vukelić",
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Igor-Vuk/Phone-Book/issues"
+  },
+  "homepage": "https://github.com/Igor-Vuk/Phone-Book#readme",
   "dependencies": {
     "axios": "^0.15.3",
     "babel-core": "^6.21.0",

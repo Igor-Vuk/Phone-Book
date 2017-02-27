@@ -1,6 +1,6 @@
 var axios = require("axios");
 
-//API endpoint
+//API endpoints
 //-------------------
 //post/get data
 const SET_CONTACTS = "/contacts";
