@@ -8,10 +8,10 @@ var actions = require("actions");
 var store = require("configureStore").configure();
 
 //Monitor change of state
-store.subscribe(() => {
-    var state = store.getState();
-    console.log("New state", state);
-});
+// store.subscribe(() => {
+//     var state = store.getState();
+//     console.log("New state", state);
+// });
 
 store.dispatch(actions.startAddContacts());
 

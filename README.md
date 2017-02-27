@@ -36,11 +36,11 @@
 * ESLint
 
 ### API endpoint ###
-**save data** 
+* **save data** 
 * "/contacts";
-**retrieve data**
+* **retrieve data**
 * "/contacts";
-**delete data**
+* **delete data**
 * "/contacts/id";
 
 ### Example pictures ###

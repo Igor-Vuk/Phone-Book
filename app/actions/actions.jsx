@@ -83,7 +83,6 @@ export var deleteContact = (id) => {
 
 export var startDeleteContact = (id) => {
     return (dispatch, getState) => {
-
         //delete data from mongodb
         axios({
             method: "delete", 
