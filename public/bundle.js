@@ -24041,9 +24041,9 @@
 	//API endpoints
 	//-------------------
 	//post/get data
-	var SET_CONTACTS = "https://small-phonebook.herokuapp.com/contacts";
+	var SET_CONTACTS = "/contacts";
 	//delete data
-	var DEL_CONTACTS = "https://small-phonebook.herokuapp.com/contacts/id";
+	var DEL_CONTACTS = "/contacts/id";
 	
 	//ACTIONS
 	//-------------------
