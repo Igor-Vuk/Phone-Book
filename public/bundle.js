@@ -25782,7 +25782,10 @@
 	        contacts: _reducers.contactsReducer
 	    });
 	
-	    var store = redux.createStore(reducer, initialState, redux.compose(redux.applyMiddleware(_reduxThunk2.default), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()));
+	    var store = redux.createStore(reducer, initialState, redux.compose(redux.applyMiddleware(_reduxThunk2.default)
+	    // Uncomment to use REDUX DEV TOOLS 
+	    // ,window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+	    ));
 	
 	    return store;
 	};

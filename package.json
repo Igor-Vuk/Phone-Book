@@ -4,7 +4,8 @@
   "description": "React Phone Book App",
   "main": "index.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "start-dev-win": "set \"NODE_ENV=development\" && node ./server.js"
   },
   "repository": {
     "type": "git",
